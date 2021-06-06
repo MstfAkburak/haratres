@@ -1,0 +1,67 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+	integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+	crossorigin="anonymous">
+
+<title>Task Directory</title>
+</head>
+
+<body>
+
+	<div class="container">
+
+		<h3>Task Directory</h3>
+		<hr>
+
+		<!-- Add a button -->
+		<a th:href="@{'/tasks/save?name=' + ${name}}" class="btn btn-primary btn-sm mb-3">
+			Add Task </a>
+
+
+		<table class="table table-bordered table-striped">
+			<thead class="thead-dark">
+				<tr>
+					<th>User Name</th>
+					<th>Task Name</th>
+					<th>Task Statement</th>
+					<th>Task Status</th>
+					<th>Task Date</th>
+					<th>Update</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<tr th:each="taskEmployee : ${taskList}">
+
+					<td th:text="${taskEmployee.task_Username}" />
+					<td th:text="${taskEmployee.taskName}" />
+					<td th:text="${taskEmployee.taskStatement}" />
+					<td th:text="${taskEmployee.taskStatus}" />
+					<td th:text="${taskEmployee.task_Date}" />
+					<td>
+						<a th:href="@{'/tasks/delete?taskId=' + ${taskEmployee.taskId}}" class="btn btn-danger">Delete</a> 
+						<a th:href="@{'/tasks/update?taskId=' + ${taskEmployee.taskId}}" class="btn btn-primary">Update</a> 
+					</td>
+
+
+				</tr>
+			</tbody>
+		</table>
+
+	</div>
+
+</body>
+</html>
+
+
+
